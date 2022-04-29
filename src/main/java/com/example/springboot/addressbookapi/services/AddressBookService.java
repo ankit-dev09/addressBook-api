@@ -1,7 +1,9 @@
 package com.example.springboot.addressbookapi.services;
 
+import com.example.springboot.addressbookapi.dao.AddressBookRepository;
 import com.example.springboot.addressbookapi.model.AddressBook;
 import com.example.springboot.addressbookapi.model.Contact;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -10,44 +12,31 @@ import java.util.stream.Collectors;
 @Service
 public class AddressBookService {
 
-    List<AddressBook> addressBooks = new ArrayList<>(Arrays.asList
-            ((new AddressBook("AddBook1", new ArrayList<>(Arrays.asList
-                    (new Contact("John", 1234568))))), (new AddressBook("AddBook2", new ArrayList<>(Arrays.asList
-                    (new Contact("Ankit", 1234569))))), (new AddressBook("AddBook3", new ArrayList<>(Arrays.asList
-                    (new Contact("Jasmine", 1234570)))))));
+    @Autowired
+    private AddressBookRepository addressBookRepository;
 
     public List<AddressBook> getAllAddressBooks() {
-        return addressBooks;
+        return addressBookRepository.getAddressBooks();
     }
 
     public AddressBook getAddressBook(String name) {
-        return addressBooks.stream().filter(t -> t.getName().equals(name)).findFirst().get();
+       return addressBookRepository.getAddressBook(name);
     }
 
     public void addAddressBook(AddressBook addressBook) {
-        addressBooks.add(addressBook);
+        addressBookRepository.addAddressBook(addressBook);
     }
 
     public void updateAddressBook(String name, AddressBook addressBook) {
-        for (int index = 0; index < addressBooks.size(); index++) {
-            AddressBook addrBook = addressBooks.get(index);
-            if (addrBook.getName().equals(name)) {
-                addressBooks.set(index, addressBook);
-                break;
-            }
-        }
+        addressBookRepository.updateAddressBook(name,addressBook);
     }
 
     public void deleteAddressBook(String name) {
-        for (AddressBook addrBook : addressBooks) {
-            if (addrBook.getName().equals(name)) {
-                addressBooks.remove(addrBook);
-                break;
-            }
-        }
+        addressBookRepository.deleteAddressBook(name);
     }
 
     public Set<Contact> getUniqueContactsFromAllAddressBooks() {
+        List<AddressBook> addressBooks = addressBookRepository.getAddressBooks();
         Set<Contact> uniqueContacts = new HashSet<>();
         for (AddressBook addressBook : addressBooks) {
             List<Contact> distinctElements = addressBook.getContact().stream()
