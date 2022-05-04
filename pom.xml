@@ -84,6 +84,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>address-book-api</finalName>
 	</build>
 
 </project>
