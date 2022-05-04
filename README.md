@@ -1,10 +1,10 @@
 # addressBook-api
 
-##Overview
+<h3> Overview </h3>
 
 Address book back end CRUD application used for managing Address books and contacts. 
 
-###Acceptance Criteria
+<h3> Acceptance Criteria </h3>
 
 * Users should be able to add new contact entries
 * Users should be able to remove existing contact entries
@@ -56,3 +56,7 @@ This command will create address-book-api.jar in the target folder of the projec
 ## API Documentation (OpenAPI)
 
 After starting the application on server, access ```http://localhost:8080/swagger-ui/index.html``` to see the endpoints.
+
+## Contact
+
+For any questions, reach out at contact.ankit09@gmail.com
