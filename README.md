@@ -55,7 +55,7 @@ This command will create address-book-api.jar in the target folder of the projec
 
 ## API Documentation (OpenAPI)
 
-After starting the application on server, access ```http://localhost:8080/swagger-ui/index.html``` to see the endpoints.
+After starting the application on server, access ```http://localhost:8080/swagger-ui.html``` to see the endpoints.
 
 ## Contact
 
