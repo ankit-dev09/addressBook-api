@@ -51,7 +51,12 @@ To build the project, go to the root directory in terminal and run :
 mvn clean install 
 ```
 
-This command will create address-book-api.jar in the target folder of the project.
+To create the docker image of the project, open terminal and go to the root directory of the project. Then execute following command:
+```docker build -t address-book-api.jar .```
+
+To run the docker image, type the following command in terminal:
+```docker run -p 9090:8080 address-book-api.jar```
+
 
 ## API Documentation (OpenAPI)
 
